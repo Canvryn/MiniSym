@@ -9,5 +9,11 @@ class TestSimplify(unittest.TestCase):
         simplified = simplify(expr)
         self.assertEqual(str(simplified), "((2 * x) + (3 * x))")  # Adjust expected output as needed
 
+    def test_simplify_add_zero(self):
+        x = Symbol('x')
+        expr = Add(x, Number(0))
+        simplified = simplify(expr)
+        self.assertEqual(str(simplified), "x")
+
 if __name__ == '__main__':
     unittest.main()  
