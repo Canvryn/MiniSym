@@ -33,3 +33,14 @@ class Pow(Expr):
         self.exp = exp
     def __str__(self):
         return f"({self.base} ** {self.exp})"
+class Number(Expr):
+    # ... existing code ...
+    def __repr__(self):
+        return f"Number({self.value})"
+
+class Symbol(Expr):
+    # ... existing code ...
+    def __repr__(self):
+        return f"Symbol('{self.name}')"
+
+# Do the same for Add, Mul, Pow
