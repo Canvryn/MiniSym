@@ -1,37 +1,76 @@
 # MiniSym
 
-MiniSym is a lightweight symbolic math engine written in Python.
+A lightweight symbolic math engine written in Python.
 
-This project builds a minimal version of a computer algebra system from scratch. It supports symbolic manipulation tasks such as simplification, expansion, factoring, and differentiation. Expressions are represented as abstract syntax trees (ASTs), enabling recursive and rule-based transformations.
+This project implements a minimal computer algebra system from scratch. It handles symbolic manipulation tasks like simplification, expansion, factoring, and differentiation. Expressions are built as abstract syntax trees (ASTs), which allows for recursive and rule-based transformations.
 
--- Features
+## Current Status
 
-- Parses algebraic expressions (e.g., `2*x + 3*x`) into ASTs
-- Simplifies expressions by combining like terms and applying basic algebraic identities
-- Expands polynomial expressions using the distributive property
-- Factors expressions using GCF extraction, difference of squares, and basic trinomials
-- Computes derivatives using standard rules (power, product, chain)
-- Optional: Streamlit-based web interface for interactive use
+### Phase 1: Core Expression Engine (Complete)
+- AST classes: `Number`, `Symbol`, `Add`, `Mul`, `Pow`
+- String representation and equality comparison
+- Python operator overloads (`+`, `*`, `**`)
 
--- Folder Structure
+### Phase 2: Parser (Complete)
+- Tokenizer for breaking strings into tokens
+- Recursive descent parser for building ASTs
+- Operator precedence handling
+- Parentheses support
+- Error handling for invalid inputs
 
-minisym/
-├── ast.py # Expression node classes
-├── parser.py # Tokenizer and recursive descent parser
-├── simplify.py # Simplification logic
-├── expand.py # Expansion logic
-├── factor.py # Factoring logic
-├── differentiate.py # Differentiation logic
-├── main.py # CLI entry point
-├── streamlit_app.py # Optional web interface
-├── tests/ # Unit tests
-└── requirements.txt
+### Phase 3: Simplification Engine (In Progress)
+- Constants and identity rules
+- Constant folding
+- Like-term combination
+- Nested simplification
 
-markdown
-Copy
-Edit
+### Phase 4: Algebraic Manipulations (Planned)
+- Expansion logic (distributive property)
+- Factoring logic (GCF, difference of squares)
 
--- Project Goals
+### Phase 5: Differentiation (Planned)
+- Power rule, product rule, constant rule
+- Chain rule (basic)
+
+## Project Structure
+
+```
+MiniSym/
+├── minisym_ast.py      # Expression node classes (Phase 1)
+├── parser.py           # Tokenizer and parser (Phase 2)
+├── simplify.py         # Simplification logic (Phase 3)
+├── test_phase1.py      # Tests for Phase 1
+├── test_phase2.py      # Tests for Phase 2
+├── demo_phase1.py      # Demo for Phase 1
+├── demo_phase2.py      # Demo for Phase 2
+└── README.md
+```
+
+## Testing
+
+Run the tests to verify functionality:
+
+```bash
+# Test Phase 1 (Core Expression Engine)
+python test_phase1.py
+
+# Test Phase 2 (Parser)
+python test_phase2.py
+```
+
+## Demo
+
+See the parser in action:
+
+```bash
+# Demo Phase 1 (Core Expression Engine)
+python demo_phase1.py
+
+# Demo Phase 2 (Parser)
+python demo_phase2.py
+```
+
+## Project Goals
 
 This project is designed to reinforce:
 - Symbolic computation techniques

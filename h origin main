@@ -1,0 +1,5 @@
+[33m0d1a285[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m core expression engine implementation(will expand on later)
+[33m4a8cc9f[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m # MiniSym
+[33m20237b5[m Add __repr__ methods to Number and Symbol classes
+[33m2028f26[m added tests for simplifying x
+[33m89f4160[m test case implementation framework
