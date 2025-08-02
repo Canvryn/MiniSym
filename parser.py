@@ -189,6 +189,16 @@ class Parser:
             self.advance()  # consume ')'
             return expr
         
+        elif token.value == '-':
+            # Handle unary minus for negative numbers
+            self.advance()  # consume '-'
+            primary = self.parse_primary()
+            if isinstance(primary, Number):
+                return Number(-primary.value)
+            else:
+                # For symbolic expressions, multiply by -1
+                return Mul(Number(-1), primary)
+        
         else:
             raise ValueError(f"Unexpected token '{token.value}' at position {token.position}")
     

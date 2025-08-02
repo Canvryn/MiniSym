@@ -18,11 +18,12 @@ This project implements a minimal computer algebra system from scratch. It handl
 - Parentheses support
 - Error handling for invalid inputs
 
-### Phase 3: Simplification Engine (In Progress)
-- Constants and identity rules
-- Constant folding
-- Like-term combination
-- Nested simplification
+### Phase 3: Simplification Engine (Complete)
+- Constants and identity rules (x + 0 → x, x * 1 → x)
+- Constant folding (2 + 3 → 5)
+- Like-term combination (2*x + 3*x → 5*x)
+- Nested simplification (recursive descent)
+- Power rules (x^1 → x, x^0 → 1)
 
 ### Phase 4: Algebraic Manipulations (Planned)
 - Expansion logic (distributive property)
@@ -41,8 +42,10 @@ MiniSym/
 ├── simplify.py         # Simplification logic (Phase 3)
 ├── test_phase1.py      # Tests for Phase 1
 ├── test_phase2.py      # Tests for Phase 2
+├── test_phase3.py      # Tests for Phase 3
 ├── demo_phase1.py      # Demo for Phase 1
 ├── demo_phase2.py      # Demo for Phase 2
+├── demo_phase3.py      # Demo for Phase 3
 └── README.md
 ```
 
@@ -56,6 +59,9 @@ python test_phase1.py
 
 # Test Phase 2 (Parser)
 python test_phase2.py
+
+# Test Phase 3 (Simplification Engine)
+python test_phase3.py
 ```
 
 ## Demo
@@ -68,6 +74,9 @@ python demo_phase1.py
 
 # Demo Phase 2 (Parser)
 python demo_phase2.py
+
+# Demo Phase 3 (Simplification Engine)
+python demo_phase3.py
 ```
 
 ## Project Goals

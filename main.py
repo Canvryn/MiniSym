@@ -6,12 +6,13 @@ Demonstrates the current functionality of the symbolic math engine.
 
 from minisym_ast import Number, Symbol, Add, Mul, Pow
 from parser import parse_expression
+from simplify import simplify
 
 def main():
     """Main demonstration of MiniSym functionality."""
     print("🚀 MiniSym - Symbolic Math Engine")
     print("=" * 50)
-    print("Current Features: Phase 1 (AST) + Phase 2 (Parser)")
+    print("Current Features: Phase 1 (AST) + Phase 2 (Parser) + Phase 3 (Simplification)")
     print()
     
     # Phase 1: Direct AST construction
@@ -78,9 +79,32 @@ def main():
     print(f"  + (y + 1): {combined}")
     
     print()
+    
+    # Phase 3: Simplification
+    print("🔧 Phase 3: Simplification Engine")
+    print("-" * 40)
+    
+    test_expressions = [
+        "x + 0",
+        "2 + 3",
+        "x * 1",
+        "x^1",
+        "2*x + 3*x",
+        "x + x"
+    ]
+    
+    for expr_str in test_expressions:
+        try:
+            parsed_expr = parse_expression(expr_str)
+            simplified_expr = simplify(parsed_expr)
+            print(f"'{expr_str}' → {simplified_expr}")
+        except Exception as e:
+            print(f"'{expr_str}' → ERROR: {e}")
+    
+    print()
     print("=" * 50)
     print("✅ MiniSym is working correctly!")
-    print("Next: Phase 3 - Simplification Engine")
+    print("Next: Phase 4 - Algebraic Manipulations")
     print("=" * 50)
 
 if __name__ == "__main__":
