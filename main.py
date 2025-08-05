@@ -7,16 +7,18 @@ Demonstrates the current functionality of the symbolic math engine.
 from minisym_ast import Number, Symbol, Add, Mul, Pow
 from parser import parse_expression
 from simplify import simplify
+from expand import expand, expand_expression
+from factor import factor, factor_expression
 
 def main():
     """Main demonstration of MiniSym functionality."""
-    print("🚀 MiniSym - Symbolic Math Engine")
+    print("MiniSym - Symbolic Math Engine")
     print("=" * 50)
-    print("Current Features: Phase 1 (AST) + Phase 2 (Parser) + Phase 3 (Simplification)")
+    print("Current Features: Phase 1 (AST) + Phase 2 (Parser) + Phase 3 (Simplification) + Phase 4 (Algebraic Manipulations)")
     print()
     
     # Phase 1: Direct AST construction
-    print("📊 Phase 1: Direct AST Construction")
+    print("Phase 1: Direct AST Construction")
     print("-" * 40)
     
     x = Symbol('x')
@@ -33,7 +35,7 @@ def main():
     print()
     
     # Phase 2: Parsing from strings
-    print("🔍 Phase 2: Parsing from Strings")
+    print("Phase 2: Parsing from Strings")
     print("-" * 40)
     
     test_expressions = [
@@ -54,7 +56,7 @@ def main():
     print()
     
     # Integration demo
-    print("🔗 Integration Demo: Combining Phases")
+    print("Integration Demo: Combining Phases")
     print("-" * 40)
     
     # Parse an expression and use it in new operations
@@ -81,7 +83,7 @@ def main():
     print()
     
     # Phase 3: Simplification
-    print("🔧 Phase 3: Simplification Engine")
+    print("Phase 3: Simplification Engine")
     print("-" * 40)
     
     test_expressions = [
@@ -102,9 +104,61 @@ def main():
             print(f"'{expr_str}' → ERROR: {e}")
     
     print()
+    
+    # Phase 4: Algebraic Manipulations
+    print("Phase 4: Algebraic Manipulations")
+    print("-" * 40)
+    
+    # Expansion examples
+    print("\nExpansion Examples:")
+    expansion_examples = [
+        "(x + 2)(x + 3)",
+        "(x + y)^2",
+        "2(x + y)"
+    ]
+    
+    for expr_str in expansion_examples:
+        try:
+            expanded = expand_expression(expr_str)
+            print(f"'{expr_str}' → {expanded}")
+        except Exception as e:
+            print(f"'{expr_str}' → ERROR: {e}")
+    
+    # Factoring examples
+    print("\nFactoring Examples:")
+    factoring_examples = [
+        "6*x + 9",
+        "x^2 - 9",
+        "2*x + 4*y"
+    ]
+    
+    for expr_str in factoring_examples:
+        try:
+            factored = factor_expression(expr_str)
+            print(f"'{expr_str}' → {factored}")
+        except Exception as e:
+            print(f"'{expr_str}' → ERROR: {e}")
+    
+    # Integration demo
+    print("\nIntegration Demo:")
+    try:
+        # Expand then factor
+        original = "(x + 2)(x + 3)"
+        expanded = expand_expression(original)
+        print(f"Original: {original}")
+        print(f"Expanded: {expanded}")
+        
+        # Use expanded expression in new operations
+        result = expanded + Number(5)
+        print(f"Expanded + 5: {result}")
+        
+    except Exception as e:
+        print(f"Integration demo error: {e}")
+    
+    print()
     print("=" * 50)
-    print("✅ MiniSym is working correctly!")
-    print("Next: Phase 4 - Algebraic Manipulations")
+    print("MiniSym is working correctly!")
+    print("Next: Phase 5 - Differentiation")
     print("=" * 50)
 
 if __name__ == "__main__":

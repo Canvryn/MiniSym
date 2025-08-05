@@ -98,7 +98,7 @@ class Parser:
         if not self.tokens:
             raise ValueError("Empty expression")
         
-        result = self.parse_expression()
+        result = self.parse_expression_with_implicit_mul()
         
         # Check if we've consumed all tokens
         if self.position < len(self.tokens):
@@ -201,6 +201,21 @@ class Parser:
         
         else:
             raise ValueError(f"Unexpected token '{token.value}' at position {token.position}")
+    
+    def parse_expression_with_implicit_mul(self):
+        """Parse expression and handle implicit multiplication."""
+        expr = self.parse_expression()
+        
+        # Check for implicit multiplication after the expression
+        while (self.position < len(self.tokens) and 
+               (self.current_token().type in ['NUMBER', 'IDENTIFIER'] or 
+                self.current_token().value == '(')):
+            
+            # Insert implicit multiplication
+            right = self.parse_primary()
+            expr = Mul(expr, right)
+        
+        return expr
     
     def current_token(self):
         """Get the current token."""
